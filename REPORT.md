@@ -1,51 +1,65 @@
-# Machine Learning Project Report
+
+# Machine Learning Task 3 Report
 
 ## 1. Project Overview
 
-The goal of this project is to predict whether a bank client will subscribe to a term deposit using machine learning classification models.
+The objective of this project is to predict whether a bank client will subscribe to a term deposit using classification algorithms.
 
-## 2. Dataset
+## 2. Dataset Description
 
-The dataset contains customer demographic information, financial indicators, and details about previous marketing campaigns.
-
-- Training samples: 32,940
-- Test samples: 8,236
-- Target variable: `y`
-- Positive class: `yes`
-- Negative class: `no`
-
-The target classes are imbalanced, with approximately 11.27% positive examples and 88.73% negative examples.
+- Training dataset: 32,940 rows and 22 columns.
+- Test dataset: 8,236 rows and 20 columns.
+- Target variable: `y`.
+- Target classes: `yes` and `no`.
+- Positive class proportion: approximately 11.27%.
+- Negative class proportion: approximately 88.73%.
 
 ## 3. Data Preprocessing
 
 - Removed the `id` column because it is an identifier.
-- Excluded `duration` to avoid using call duration as a predictor.
-- Imputed missing values using median imputation for numerical features and most-frequent imputation for categorical features.
-- Scaled numerical features.
-- Applied one-hot encoding to categorical features.
-- Used a stratified train-validation split.
+- Excluded `duration` from model features.
+- Used median imputation for numerical features.
+- Used most-frequent imputation for categorical features.
+- Scaled numerical features using StandardScaler.
+- Encoded categorical features using OneHotEncoder.
+- Split the training data into training and validation sets using stratified sampling.
 
 ## 4. Models
 
-The following models were evaluated:
+Three classification models were evaluated:
 
 - Logistic Regression
 - Decision Tree
 - Random Forest
 
-## 5. Evaluation
+## 5. Model Evaluation
 
-Models were compared using Accuracy, Precision, Recall, F1-score, and ROC-AUC.
+The models were evaluated using Accuracy, Precision, Recall, F1-score, and ROC-AUC.
 
-The best model was selected based on validation ROC-AUC.
+| Model | Accuracy | Precision | Recall | F1-score | ROC-AUC |
+|---|---:|---:|---:|---:|---:|
+| Logistic Regression | 0.8365 | 0.3701 | 0.6429 | 0.4697 | 0.8028 |
+| Random Forest | 0.8978 | 0.5873 | 0.3127 | 0.4081 | 0.7899 |
+| Decision Tree | 0.8555 | 0.4004 | 0.5687 | 0.4699 | 0.7447 |
 
-## 6. Output Files
+## 6. Model Selection
 
-- `outputs/model.joblib`: saved trained model
-- `outputs/predictions.csv`: test predictions
-- `outputs/model_comparison.csv`: validation metrics for all models
+Logistic Regression was selected based on its highest validation ROC-AUC score of 0.8028.
 
-## 7. Conclusion
+## 7. Test Predictions
 
-The project demonstrates a complete classification workflow, including preprocessing, model training, evaluation, model selection, and prediction generation.
+The selected model generated predictions for all 8,236 test records.
 
+- Total predictions: 8,236.
+- Missing predictions: 0.
+- Output labels: `yes` and `no`.
+
+## 8. Output Files
+
+- `outputs/model.joblib`
+- `outputs/predictions.csv`
+- `outputs/model_comparison.csv`
+
+## 9. Conclusion
+
+Logistic Regression achieved the highest ROC-AUC score among the three evaluated models. The project completed the main classification workflow, including preprocessing, model training, evaluation, model selection, and test prediction generation.
